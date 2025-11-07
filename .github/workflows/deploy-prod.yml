@@ -36,8 +36,9 @@ jobs:
         run: aws s3 sync ./frontend s3://portfolio.jijilthomas.online --delete
 
       - name: Get CloudFront ID (PROD)
+        id: get_cf
         working-directory: infra-prod
-        run: echo "CF_ID=$(terraform output -raw cloudfront_distribution_id)" >> $GITHUB_ENV
+        run: echo "CF_ID=$(terraform output -raw cloudfront_distribution_id)" >> "$GITHUB_ENV"
 
       - name: Invalidate CloudFront (PROD)
-        run: aws cloudfront create-invalidation --distribution-id $CF_ID --paths "/*"
+        run: aws cloudfront create-invalidation --distribution-id "${{ env.CF_ID }}" --paths "/*"
