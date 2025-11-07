@@ -23,5 +23,5 @@ jobs:
         run: aws s3 sync ./frontend s3://dev.jijilthomas.online --delete
 
       - name: Create CloudFront invalidation
-        run: aws cloudfront create-invalidation --distribution-id E2ON4IC7XBS7MR --paths "/*" --region us-east-1
+        run: aws cloudfront create-invalidation --distribution-id E1YGOGUY9MM64B --paths "/*" --region us-east-1
 
