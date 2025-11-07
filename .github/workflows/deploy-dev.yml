@@ -18,6 +18,9 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
+       
+      - name: Replace API URL (DEV)
+        run: sed -i 's|{{API_URL}}|https://hvoayuv4gg.execute-api.ap-south-1.amazonaws.com/dev/|g' frontend/index.html
 
       - name: Sync frontend to S3 bucket
         run: aws s3 sync ./frontend s3://dev.jijilthomas.online --delete

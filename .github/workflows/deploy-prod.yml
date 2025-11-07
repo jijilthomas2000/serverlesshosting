@@ -36,7 +36,7 @@ jobs:
         run: aws s3 sync ./frontend s3://portfolio.jijilthomas.online --delete
 
       - name: Get CloudFront ID (PROD)
-        id: get_cf
+        id: get_cf 
         working-directory: infra-prod
         run: echo "CF_ID=$(terraform output -raw cloudfront_distribution_id)" >> "$GITHUB_ENV"
 
