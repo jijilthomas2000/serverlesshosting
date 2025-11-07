@@ -33,7 +33,7 @@ jobs:
         run: terraform apply -auto-approve -var-file=prod.tfvars
 
       - name: Replace API URL (PROD)
-        run: sed -i 's|{{API_URL}}|https://q6lq9z9lj7.execute-api.ap-south-1.amazonaws.com/prod/|g' frontend/index.html
+        run: sed -i 's|{{API_URL}}|https://pnw87xkd05.execute-api.ap-south-1.amazonaws.com/prod/|g' frontend/index.html
 
       - name: Sync frontend to S3 bucket (PROD)
         run: aws s3 sync ./frontend s3://portfolio.jijilthomas.online --delete
