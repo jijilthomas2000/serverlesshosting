@@ -1,8 +1,9 @@
 import boto3
 import json
+import os
 
 dynamodb = boto3.resource('dynamodb')
-table = dynamodb.Table('visitor_count_dev')
+table = dynamodb.Table(os.environ['TABLE_NAME'])
 
 def lambda_handler(event, context):
     # increment visitor count

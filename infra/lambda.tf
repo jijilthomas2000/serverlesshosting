@@ -1,5 +1,5 @@
 resource "aws_iam_role" "lambda_exec" {
-  name = "lambda_exec_role"
+ name = "lambda_exec_role_${var.environment}"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17",
@@ -23,15 +23,15 @@ resource "aws_iam_role_policy_attachment" "lambda_ddb" {
 
 resource "aws_lambda_function" "visitor" {
   filename         = "${path.module}/lambda/visitor.zip"
-  function_name    = "visitor_counter"
+  function_name = "visitor_counter_${var.environment}"
   role             = aws_iam_role.lambda_exec.arn
   handler          = "visitor.lambda_handler"
   runtime          = "python3.12"
   source_code_hash = filebase64sha256("${path.module}/lambda/visitor.zip")
 
-  environment {
+environment {
   variables = {
-    ENVIRONMENT = var.environment
+    TABLE_NAME = "visitor_count_${var.environment}"
   }
 }
 
