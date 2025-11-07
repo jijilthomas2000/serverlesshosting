@@ -24,6 +24,10 @@ jobs:
         with:
           terraform_version: 1.5.0
 
+      - name: Terraform init PROD
+        working-directory: infra-prod
+        run: terraform init -reconfigure
+
       - name: Terraform apply PROD
         working-directory: infra-prod
         run: terraform apply -auto-approve -var-file=prod.tfvars
