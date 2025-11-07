@@ -22,11 +22,13 @@ jobs:
       - name: Sync frontend to S3 bucket
         run: aws s3 sync ./frontend s3://dev.jijilthomas.online --delete
 
+      - name: Init Terraform
+        working-directory: infra
+        run: terraform init
+
       - name: Get CloudFront ID
-        id: getcf
+        working-directory: infra
         run: echo "CF_ID=$(terraform output -raw cloudfront_distribution_id)" >> $GITHUB_ENV
 
       - name: Create CloudFront invalidation
         run: aws cloudfront create-invalidation --distribution-id $CF_ID --paths "/*"
-
-
