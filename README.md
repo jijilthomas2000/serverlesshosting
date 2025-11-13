@@ -54,29 +54,29 @@ Route53 DNS
 ```
 
 .
-├── backend/                  # Lambda function source code
-│   └── visitor.py
-├── frontend/                 # Same frontend used for both dev & prod
-│   ├── index.html
-│   └── style.css
-├── infra/                    # Dev environment terraform
-│   ├── acm.tf
-│   ├── apigw.tf
-│   ├── backend.tf
-│   ├── cloudfront.tf
-│   ├── dynamodb.tf
-│   ├── lambda.tf
-│   ├── route53.tf
-│   ├── s3.tf
-│   ├── variables.tf
-│   ├── dev.tfvars
-│   └── output.tf
-├── infra-prod/               # Prod environment terraform
-│   ├── (same structure as infra)
-├── .github/workflows/        # GitHub Actions CI/CD
-│   ├── deploy-dev.yml
-│   └── deploy-prod.yml
-└── README.md
+backend/                  # Lambda function source code
+└── visitor.py
+frontend/                 # Same frontend used for both dev & prod
+  index.html
+  style.css
+infra/                    # Dev environment terraform
+ ├── acm.tf
+ ├── apigw.tf
+ ├── backend.tf
+ ├── cloudfront.tf
+ ├── dynamodb.tf
+ ├── lambda.tf
+ ├── route53.tf
+ ├── s3.tf
+ ├── variables.tf
+ ├── dev.tfvars
+ └── output.tf
+ infra-prod/               # Prod environment terraform
+ ├── (same structure as infra)
+ .github/workflows/        # GitHub Actions CI/CD
+ ├── deploy-dev.yml
+  └── deploy-prod.yml
+─ README.md
 
 ```
 
